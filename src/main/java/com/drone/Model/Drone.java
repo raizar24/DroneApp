@@ -11,14 +11,13 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 public class Drone {
-
     @Id
-    @Size(max = 100)
+    @Size(max = 100) //Serial Number (100 characters max)
     private String serialNumber;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private DroneModel droneModel;
+    private DroneModel droneModel; //(Lightweight, Middleweight, Cruiserweight, Heavyweight)
 
     @NotNull
     @Min(0)
@@ -32,13 +31,13 @@ public class Drone {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private DroneState droneState;
+    private DroneState droneState; //(IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING)
 
-    //for default constructor
-    public Drone() {}
+    //default constructor
+    public Drone(){};
 
-    // Parameterized constructor
-    public Drone(String serialNumber, DroneModel droneModel, int weightLimit, int batteryCapacity, DroneState droneState) {
+    public Drone(String serialNumber, DroneModel droneModel, int weightLimit,
+                 int batteryCapacity, DroneState droneState) {
         this.serialNumber = serialNumber;
         this.droneModel = droneModel;
         this.weightLimit = weightLimit;
@@ -54,11 +53,11 @@ public class Drone {
         this.serialNumber = serialNumber;
     }
 
-    public DroneModel getModel() {
+    public DroneModel getDroneModel() {
         return droneModel;
     }
 
-    public void setModel(DroneModel droneModel) {
+    public void setDroneModel(DroneModel droneModel) {
         this.droneModel = droneModel;
     }
 
@@ -78,11 +77,11 @@ public class Drone {
         this.batteryCapacity = batteryCapacity;
     }
 
-    public DroneState getState() {
+    public DroneState getDroneState() {
         return droneState;
     }
 
-    public void setState(DroneState droneState) {
+    public void setDroneState(DroneState droneState) {
         this.droneState = droneState;
     }
 
@@ -93,9 +92,8 @@ public class Drone {
                 "serialNumber='" + serialNumber + '\'' +
                 ", model=" + droneModel +
                 ", weightLimit=" + weightLimit +
-                ", batteryCapacity=" + batteryCapacity +
+                ", batteryCapacity=" + batteryCapacity + "%" +
                 ", state=" + droneState +
                 '}';
     }
-
 }

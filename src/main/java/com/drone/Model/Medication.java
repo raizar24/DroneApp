@@ -14,14 +14,14 @@ public class Medication {
     private int id;
 
     @NotNull
-    @Pattern(regexp = "^[a-zA-Z0-9_-]+$") //only allows "a-z","A-Z","0-9","-","_" characters
+    @Pattern(regexp = "^[a-zA-Z0-9_-]+$") //(allowed only letters, numbers, -, _)
     private String name;
 
     @NotNull
     private int weight;
 
     @NotNull
-    @Pattern(regexp = "^[A-Z0-9_-]+$") //only allows,"A-Z","0-9","-","_" characters
+    @Pattern(regexp = "^[A-Z0-9_-]+$") //(allowed only uppercase letters, underscores and numbers)
     private String code;
 
     @Lob
