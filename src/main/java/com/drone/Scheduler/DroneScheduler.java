@@ -18,7 +18,7 @@ public class DroneScheduler {
 
     private static final int BATTERY_THRESHOLD = 25;
     private static final int BATTERY_CONSUMPTION_PER_TRIP = 25;
-    private static final int SCHEDULE_INTERVAL_MS = 5000; // 5 seconds
+    private static final int SCHEDULE_INTERVAL_MS = 10000; // 10 seconds
 
     private static final Logger logger = LoggerFactory.getLogger(DroneScheduler.class);
 
