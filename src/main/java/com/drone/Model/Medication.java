@@ -1,16 +1,16 @@
 package com.drone.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+
+import java.util.Set;
 
 @Entity
 public class Medication {
 
     @Id
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotNull
@@ -24,13 +24,14 @@ public class Medication {
     @Pattern(regexp = "^[A-Z0-9_-]+$") //(allowed only uppercase letters, underscores and numbers)
     private String code;
 
-    @Lob
-    private byte[] image;
+    private String image;
 
+    @OneToMany(mappedBy = "medication", cascade = CascadeType.ALL)
+    private Set<DeliveryList> deliveries;
     //default
     public Medication() {}
 
-    public Medication(String name, int weight, String code, byte[] image) {
+    public Medication(String name, int weight, String code, String image) {
         this.name = name;
         this.weight = weight;
         this.code = code;
@@ -70,15 +71,14 @@ public class Medication {
         this.code = code;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    // full description
     @Override
     public String toString() {
         return "Medication{" +
@@ -89,6 +89,5 @@ public class Medication {
                 ", image=" + (image != null ? "exists" : "not present") +
                 '}';
     }
-
 
 }

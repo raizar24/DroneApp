@@ -1,13 +1,12 @@
 package com.drone.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.Set;
 
 @Entity
 public class Drone {
@@ -15,23 +14,22 @@ public class Drone {
     @Size(max = 100) //Serial Number (100 characters max)
     private String serialNumber;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
     private DroneModel droneModel; //(Lightweight, Middleweight, Cruiserweight, Heavyweight)
 
-    @NotNull
     @Min(0)
     @Max(1000)
     private int weightLimit;
 
-    @NotNull
     @Min(0)
     @Max(100)
     private int batteryCapacity;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
     private DroneState droneState; //(IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING)
+
+    @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL)
+    private Set<DeliveryList> deliveries;
 
     //default constructor
     public Drone(){};
