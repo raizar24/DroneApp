@@ -25,12 +25,12 @@ public class DroneService {
     private static final int BATTERY_THRESHOLD = 25;
 
     // Register a new drone
-    public Drone registerDrone(String serialNumber, DroneModel droneModel, int weightLimit, int batteryCapacity, DroneState droneState) {
+    public void registerDrone(String serialNumber, DroneModel droneModel, int weightLimit, int batteryCapacity, DroneState droneState) {
         if (droneRepository.existsById(serialNumber)) {
             throw new RuntimeException("Drone with serial number " + serialNumber + " already exists.");
         }
         Drone drone = new Drone(serialNumber, droneModel, weightLimit, batteryCapacity, droneState);
-        return droneRepository.save(drone);
+        droneRepository.save(drone);
     }
 
     // Get drone details
