@@ -361,3 +361,26 @@ This will allow you to quickly test all API endpoints.
 }
 ```
 
+# Preloaded Data in H2 In-Memory Database
+## Drone Table
+| Serial Number | Drone Model   | Weight Limit (g) | Battery Capacity (%) | State |
+|---------------|---------------|-------------------|-----------------------|-------|
+| DRONE001      | LIGHTWEIGHT   | 100               | 100                   | IDLE  |
+| DRONE002      | MIDDLEWEIGHT  | 250               | 75                    | IDLE  |
+| DRONE003      | CRUISERWEIGHT | 400               | 50                    | IDLE  |
+| DRONE004      | HEAVYWEIGHT   | 1000              | 25                    | IDLE  |
+| DRONE005      | HEAVYWEIGHT   | 1000              | 25                    | IDLE  |
+| DRONE006      | LIGHTWEIGHT   | 100               | 100                   | IDLE  |
+| DRONE007      | MIDDLEWEIGHT  | 250               | 75                    | IDLE  |
+| DRONE008      | CRUISERWEIGHT | 400               | 50                    | IDLE  |
+| DRONE009      | HEAVYWEIGHT   | 1000              | 25                    | IDLE  |
+| DRONE010      | CRUISERWEIGHT | 400               | 50                    | IDLE  |
+
+## Medication Table
+| ID | Name         | Weight (g) | Code   | Image       |
+|----|--------------|------------|--------|-------------|
+| 1  | Paracetamol  | 20         | CODE1  | image1.jpg  |
+| 2  | Ibuprofen    | 30         | CODE2  | image2.jpg  |
+| 3  | Aspirin      | 40         | CODE3  | image3.jpg  |
+| 4  | Methformin   | 50         | CODE4  | image4.jpg  |
+
