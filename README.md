@@ -32,6 +32,13 @@ Before testing the API endpoints, ensure that the JUnit tests are executed:
 - Right-click on the test package and select Run `All Tests`.
 - Ensure that all tests pass successfully before proceeding.
 
+## Scheduler for Drone Status Updates
+The application includes a scheduler that runs at a `10-seconds` interval. This scheduler automatically updates the drone `status`:
+- From `DELIVERING` to `DELIVERED`.
+- From `DELIVERED` to `RETURNING`.
+
+This ensures that the drone workflow transitions smoothly through the different states.
+
 ## API Endpoints
 
 ### Drones
@@ -180,14 +187,6 @@ Get All Drones
     "image": "image-url"
   }
   ```
-
-## Scheduler for Drone Status Updates
-The application includes a scheduler that runs at a `10-second` interval. This scheduler automatically updates the drone `status`:
-- From `DELIVERING` to `DELIVERED`.
-- From `DELIVERED` to `RETURNING`.
-
-This ensures that the drone workflow transitions smoothly through the different states.
-
 ## Importing Postman Collection
 
 To simplify API testing, import the following Postman collection JSON into Postman:
