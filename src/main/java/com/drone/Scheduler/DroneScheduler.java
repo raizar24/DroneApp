@@ -60,13 +60,9 @@ public class DroneScheduler {
                     break;
 
                 case DELIVERED:
-                    if (drone.getBatteryCapacity() >= BATTERY_CONSUMPTION_PER_TRIP) {
                         updateDroneState(drone, DroneState.RETURNING);
                         drone.setBatteryCapacity(drone.getBatteryCapacity() - BATTERY_CONSUMPTION_PER_TRIP);
                         logger.info("Drone {} is RETURNING. Battery now at {}%.", serialNumber, drone.getBatteryCapacity());
-                    } else {
-                        logger.warn("Drone {} cannot return due to low battery: {}%", serialNumber, drone.getBatteryCapacity());
-                    }
                     break;
 
                 case RETURNING:
