@@ -156,13 +156,16 @@ Get All Drones
 - Retrieves details of a specific medication by `id`.
 - Example Response:
   ```json
-    {
+  {
+    "medication": {
         "id": 1,
         "name": "Paracetamol",
         "weight": 20,
         "code": "CODE1",
         "image": "image1.jpg"
-    }
+    },
+    "status": "success"
+  }
   ```
 
 ### Add new Medication.
