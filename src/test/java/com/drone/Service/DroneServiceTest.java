@@ -115,7 +115,7 @@ class DroneServiceTest {
     void testAddMedicationAndExceedWeightLimit() {
         Drone drone = new Drone(DRONE_ID, DroneModel.LIGHTWEIGHT, 500, 50, DroneState.IDLE);
         Medication medication = new Medication("Paracetamol", 200, "PARA123", "image.png");
-
+        medication.setId(1);
         List<DeliveryList> existingDeliveries = new ArrayList<>();
         when(droneRepository.findById(DRONE_ID)).thenReturn(Optional.of(drone));
         when(medicationRepository.findById(MEDICATION_ID)).thenReturn(Optional.of(medication));
@@ -138,11 +138,4 @@ class DroneServiceTest {
 
         assertEquals("Total weight exceeds the drone's capacity of 500 grams.", exception.getMessage());
     }
-
-
-
-
-
-
-
 }
