@@ -66,13 +66,13 @@ public class DroneService {
             throw new RuntimeException("Total weight exceeds the drone's capacity of " + drone.getWeightLimit() + " grams.");
         }
 
+        if (drone.getBatteryCapacity() < BATTERY_THRESHOLD ) {
+            throw new RuntimeException("Battery too low for loading!");
+        }
+
         if (!medicationExists) {
             DeliveryList newDelivery = new DeliveryList(drone, medication, quantity);
             deliveries.add(newDelivery);
-        }
-
-        if (drone.getBatteryCapacity() < BATTERY_THRESHOLD ) {
-            throw new RuntimeException("Battery too low for loading!");
         }
 
         deliveryListRepository.saveAll(deliveries);
