@@ -96,16 +96,16 @@ Get All Drones
 - Endpoint: `GET /api/medications?id=1`
 - Retrieves details of a specific medication by `id`.
 
-### Update Medication Details
+### Add new Medication.
 - Endpoint: `PUT /api/medications`
-- Updates the details of an existing medication.
+- adds new medication.
 - Payload:
   ```json
   {
-    "id": 10,
-    "name": "Alaksan",
-    "weight": 100,
-    "code": "MED999"
+    "name": "Paracetamol",
+    "weight": 10,
+    "code": "PARA500",
+    "image": "image-url"
   }
   ```
 
