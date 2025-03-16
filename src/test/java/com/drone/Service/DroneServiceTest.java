@@ -110,4 +110,39 @@ class DroneServiceTest {
 
         assertEquals("Medication not found with ID: 999", exception.getMessage());
     }
+
+    @Test
+    void testAddMedicationAndExceedWeightLimit() {
+        Drone drone = new Drone(DRONE_ID, DroneModel.LIGHTWEIGHT, 500, 50, DroneState.IDLE);
+        Medication medication = new Medication("Paracetamol", 200, "PARA123", "image.png");
+
+        List<DeliveryList> existingDeliveries = new ArrayList<>();
+        when(droneRepository.findById(DRONE_ID)).thenReturn(Optional.of(drone));
+        when(medicationRepository.findById(MEDICATION_ID)).thenReturn(Optional.of(medication));
+        when(deliveryListRepository.findByDroneSerialNumber(DRONE_ID)).thenReturn(existingDeliveries);
+
+        // Load 2 quantity 400g
+        droneService.loadDrone(DRONE_ID, MEDICATION_ID, 2);
+
+        // check state loading
+        assertEquals(DroneState.LOADING, drone.getDroneState());
+
+        // check loaded 400g
+        existingDeliveries.add(new DeliveryList(drone, medication, 2));
+        when(deliveryListRepository.findByDroneSerialNumber(DRONE_ID)).thenReturn(existingDeliveries);
+
+        // add another 200g, error exceed weight
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            droneService.loadDrone(DRONE_ID, MEDICATION_ID, 1);
+        });
+
+        assertEquals("Total weight exceeds the drone's capacity of 500 grams.", exception.getMessage());
+    }
+
+
+
+
+
+
+
 }

@@ -60,15 +60,15 @@ public class DroneService {
             }
         }
 
-        // if not exist add new entry
-        if (!medicationExists) {
-            DeliveryList newDelivery = new DeliveryList(drone, medication, quantity);
-            deliveries.add(newDelivery);
-            totalWeight += medication.getWeight() * quantity;
-        }
+        totalWeight += medication.getWeight() * quantity;
 
         if (totalWeight > drone.getWeightLimit()) {
             throw new RuntimeException("Total weight exceeds the drone's capacity of " + drone.getWeightLimit() + " grams.");
+        }
+
+        if (!medicationExists) {
+            DeliveryList newDelivery = new DeliveryList(drone, medication, quantity);
+            deliveries.add(newDelivery);
         }
 
         if (drone.getBatteryCapacity() < BATTERY_THRESHOLD ) {
