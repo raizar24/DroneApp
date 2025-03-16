@@ -346,7 +346,7 @@ This will allow you to quickly test all API endpoints.
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": 10,\r\n  \"name\": \"Alaksan\",\r\n  \"weight\": 100,\r\n  \"code\": \"MED999\"\r\n}",
+					"raw": "{\r\n  \"name\": \"Paracetamol\",\r\n  \"weight\": 10,\r\n  \"code\": \"PARA500\",\r\n  \"image\": \"image-url\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
