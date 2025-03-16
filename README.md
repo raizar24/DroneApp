@@ -38,18 +38,67 @@ Before testing the API endpoints, ensure that the JUnit tests are executed:
 Get All Drones
 - Endpoint: `GET /api/drones`
 - Retrieves a list of all registered drones.
+- Example Response:
+  ```json
+    {
+        "serialNumber": "DRONE001",
+        "droneModel": "LIGHTWEIGHT",
+        "weightLimit": 100,
+        "batteryCapacity": 100,
+        "droneState": "IDLE"
+    }
+  ```
 
 ### Get Available Drones
 - Endpoint: `GET /api/drones/available`
 - Retrieves drones that are available for loading.
+- Example Response:
+  ```json
+    {
+        "serialNumber": "DRONE001",
+        "droneModel": "LIGHTWEIGHT",
+        "weightLimit": 100,
+        "batteryCapacity": 100,
+        "droneState": "IDLE"
+    }
+  ```
 
 ### Get Loaded Medications By Serial Number
 - Endpoint: `GET /api/drones/medications?serialNumber=DRONE001`
 - Retrieves the medications loaded onto a specific `serialNumber`.
+- Example Response:
+  ```json
+    {
+        "id": 1,
+        "drone": {
+            "serialNumber": "DRONE001",
+            "droneModel": "LIGHTWEIGHT",
+            "weightLimit": 100,
+            "batteryCapacity": 100,
+            "droneState": "LOADING"
+        },
+        "medication": {
+            "id": 1,
+            "name": "Paracetamol",
+            "weight": 20,
+            "code": "CODE1",
+            "image": "image1.jpg"
+        },
+        "quantity": 1,
+        "totalWeight": 20
+    }
+  ```
 
 ### Get Drone Battery Level
 - Endpoint: `GET /api/drones/battery?serialNumber=DRONE001`
 - Retrieves the battery level of a specific `serialNumber`.
+- Example Response:
+  ```json
+    {
+      "serialNumber": "DRONE001",
+      "batteryPercentage": 100
+    }
+  ```
 
 ### Register Drone
 - Endpoint: `POST /api/drones/register`
@@ -91,10 +140,30 @@ Get All Drones
 ### Get All Medications
 - Endpoint: `GET /api/medications`
 - Retrieves all available medications.
+- Example Response:
+  ```json
+    {
+        "id": 1,
+        "name": "Paracetamol",
+        "weight": 20,
+        "code": "CODE1",
+        "image": "image1.jpg"
+    },
+  ```
 
 ### Get Medication By ID
 - Endpoint: `GET /api/medications?id=1`
 - Retrieves details of a specific medication by `id`.
+- Example Response:
+  ```json
+    {
+        "id": 1,
+        "name": "Paracetamol",
+        "weight": 20,
+        "code": "CODE1",
+        "image": "image1.jpg"
+    }
+  ```
 
 ### Add new Medication.
 - Endpoint: `PUT /api/medications`
