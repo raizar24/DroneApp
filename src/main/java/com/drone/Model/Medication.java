@@ -11,17 +11,17 @@ public class Medication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @NotNull
-    @Pattern(regexp = "^[a-zA-Z0-9_-]+$") //(allowed only letters, numbers, -, _)
+    @Pattern(regexp = "^[a-zA-Z0-9_-]+$",message = "Invalid medication name") //(allowed only letters, numbers, -, _)
     private String name;
 
     @NotNull
     private int weight;
 
     @NotNull
-    @Pattern(regexp = "^[A-Z0-9_-]+$") //(allowed only uppercase letters, underscores and numbers)
+    @Pattern(regexp = "^[A-Z0-9_-]+$",message = "Invalid medication code") //(allowed only uppercase letters, underscores and numbers)
     private String code;
 
     private String image;

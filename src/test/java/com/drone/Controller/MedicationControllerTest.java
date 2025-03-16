@@ -95,4 +95,36 @@ class MedicationControllerTest {
                 .andExpect(jsonPath("$.status").value("error"))
                 .andExpect(jsonPath("$.message").value("Medication not found"));
     }
+
+    @Test
+    void testInvalidMedicationName() throws Exception {
+        Medication medication = new Medication();
+        medication.setId(1);
+        medication.setName("Invalid@Name");
+        medication.setWeight(50);
+        medication.setCode("VALIDCODE");
+        medication.setImage("image.png");
+
+        mockMvc.perform(put("/api/medications")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(medication)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testInvalidMedicationCODE() throws Exception {
+        Medication medication = new Medication();
+        medication.setId(1);
+        medication.setName("VALIDName");
+        medication.setWeight(50);
+        medication.setCode("INVALID@CODE");
+        medication.setImage("image.png");
+
+        mockMvc.perform(put("/api/medications")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(medication)))
+                .andExpect(status().isBadRequest());
+    }
+
+
 }

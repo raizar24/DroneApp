@@ -18,16 +18,16 @@ INSERT INTO Drone (serial_number, drone_model, weight_limit, battery_capacity, d
 INSERT INTO Drone (serial_number, drone_model, weight_limit, battery_capacity, drone_state) VALUES ('DRONE010', 'CRUISERWEIGHT', 400, 50, 'IDLE');
 
 --medication
+DROP TABLE IF EXISTS Medication;
 CREATE TABLE IF NOT EXISTS Medication (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     weight INT NOT NULL,
     code VARCHAR(20) NOT NULL,
     image VARCHAR(20),
     drone_serial_number VARCHAR(100)
 );
-INSERT INTO Medication (id, name, weight, code, image, drone_serial_number) VALUES (1, 'Paracetamol', 20, 'CODE1', 'image1.jpg', '');
-INSERT INTO Medication (id, name, weight, code, image, drone_serial_number) VALUES (2, 'Ibuprofen', 30, 'CODE2', 'image2.jpg', '');
-INSERT INTO Medication (id, name, weight, code, image, drone_serial_number) VALUES (3, 'Aspirin', 40, 'CODE3', 'image3.jpg', '');
-INSERT INTO Medication (id, name, weight, code, image, drone_serial_number) VALUES (4, 'Methformin', 50, 'CODE4', 'image4.jpg', '');
-
+INSERT INTO Medication (name, weight, code, image, drone_serial_number) VALUES ('Paracetamol', 20, 'CODE1', 'image1.jpg', '');
+INSERT INTO Medication (name, weight, code, image, drone_serial_number) VALUES ('Ibuprofen', 30, 'CODE2', 'image2.jpg', '');
+INSERT INTO Medication (name, weight, code, image, drone_serial_number) VALUES ('Aspirin', 40, 'CODE3', 'image3.jpg', '');
+INSERT INTO Medication (name, weight, code, image, drone_serial_number) VALUES ('Metformin', 50, 'CODE4', 'image4.jpg', '');

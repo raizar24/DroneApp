@@ -3,6 +3,7 @@ package com.drone.Controller;
 
 import com.drone.Model.Medication;
 import com.drone.Service.MedicationService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class MedicationController {
     private MedicationService medicationService;
 
     @PutMapping
-    public ResponseEntity<Map<String, Object>> addMedication(@RequestBody Medication medication) {
+    public ResponseEntity<Map<String, Object>> addMedication(@Valid @RequestBody Medication medication) {
         try {
             Medication savedMedication = medicationService.addMedication(medication);
             Map<String, Object> response = new HashMap<>();

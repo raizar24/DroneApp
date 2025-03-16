@@ -117,13 +117,16 @@ class DroneControllerTest {
     @Test
     void testGetLoadedMedications() throws Exception {
         Medication medication = new Medication();
+        medication.setId(1); // Ensure ID is not null
         medication.setName("Biogesic");
         medication.setWeight(10);
         medication.setCode("CODE001");
         medication.setImage("image1.jpg");
 
         DeliveryList delivery = new DeliveryList();
+        delivery.setId(1L); // Ensure ID is not null
         delivery.setMedication(medication);
+
         when(droneService.getLoadedMedications("DRONE001"))
                 .thenReturn(Collections.singletonList(delivery));
 
@@ -131,6 +134,7 @@ class DroneControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1));
     }
+
 
 
     @Test
